@@ -14,10 +14,10 @@ public final class Numbers {
      * @param values массив чисел
      * @return сумма элементов массива
      */
-    public static int sum(int[] values) {
-        int sum = 0;
-        for (int value : values) sum += value;
-        return sum;
+    public static <T extends Number> double sum(T[] values) {
+        double sum = 0;
+        for (T value :values)   sum += value.doubleValue();
+        return  sum;
     }
 
     /**
@@ -27,8 +27,8 @@ public final class Numbers {
      * @param values массив значений
      * @return среднее арифметическое с точностью до типа {@code double}.
      */
-    public static double avg(int[] values) {
-        return (double) sum(values) / values.length;
+    public static <T extends Number> double avg(T[] values) {
+        return sum(values) / values.length;
     }
 
     /**
@@ -48,10 +48,10 @@ public final class Numbers {
      * @param values массив значений
      * @return максимальное значение массива
      */
-    public static int max(int[] values) {
-        int result = values[0];
+    public static <T extends Number> int max(T[] values) {
+        int result = values[0].intValue();
         for (int i = 1; i < values.length; i++) {
-            result = max(result, values[i]);
+            result = max(result, values[i].intValue());
         }
         return result;
     }
@@ -73,10 +73,10 @@ public final class Numbers {
      * @param values массив значений
      * @return минимальное значение массива
      */
-    public static int min(int[] values) {
-        int result = values[0];
+    public static <T extends Number> int min(T[] values) {
+        int result = values[0].intValue();
         for (int i = 1; i < values.length; i++) {
-            result = min(result, values[i]);
+            result = min(result, values[i].intValue());
         }
         return result;
     }
