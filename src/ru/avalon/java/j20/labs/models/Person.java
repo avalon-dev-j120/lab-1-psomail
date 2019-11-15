@@ -42,4 +42,18 @@ public class Person {
     public String getSurname() {
         return surname;
     }
+
+    public boolean equals(Object someObject){
+
+        if (this == someObject) return true;
+
+        if(someObject instanceof Person){
+
+            Person person = (Person) someObject;
+
+            return name.equals(person.name) && surname.equals(person.surname);
+        }
+
+        return false;
+    }
 }
