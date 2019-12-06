@@ -32,9 +32,20 @@ public class Fibonacci implements Iterable<Integer> {
          * последовательности существует. В обратном случае
          * {@code false}.
          */
+
+        private int counter = 0,
+                    lenght,
+                    number1 = 0,
+                    number2 = 1,
+                    nexnNumber;
+
+        public FibonacciIterator(int lenght) {
+            this.lenght = lenght;
+        }
+
         @Override
         public boolean hasNext() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+            return counter < lenght ;
         }
 
         /**
@@ -45,7 +56,20 @@ public class Fibonacci implements Iterable<Integer> {
          */
         @Override
         public Integer next() {
-            throw new UnsupportedOperationException("Not implemented yet!");
+
+            counter++;
+
+            if (counter == 1) nexnNumber = 0;
+            if (counter == 2) nexnNumber = 1;
+            if (counter > 2){
+
+                nexnNumber = number1 + number2;
+                number1 = number2;
+                number2 = nexnNumber;
+
+            }
+
+            return nexnNumber;
         }
     }
 
@@ -55,8 +79,14 @@ public class Fibonacci implements Iterable<Integer> {
      *
      * @return итератор последовательности чисел Фибоначчи
      */
+    private final int lenght;
+
+    public Fibonacci(int lenght) {
+        this.lenght = lenght;
+    }
+
     @Override
     public Iterator<Integer> iterator() {
-        return new FibonacciIterator();
+        return new FibonacciIterator(lenght);
     }
 }
